@@ -4,6 +4,7 @@ FROM ubuntu:18.04
 ARG RUNNER_VERSION="2.289.1"
 
 RUN apt-get update -y && apt-get upgrade -y && useradd -m actionsdockeruser
+RUN DEBIAN_FRONTEND=noninteractive TZ=America/New_York apt-get -y install tzdata
 RUN apt-get install -y --no-install-recommends \
     curl \
     tar \
