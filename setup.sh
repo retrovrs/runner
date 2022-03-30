@@ -18,59 +18,57 @@ Select the info for the github runner you want to run
 
 PS3="Select CPU architecture: "
 
-select arch in x86_64 x86 exit
-do  
+select arch in x86_64 x86 exit; do
     case $arch in
     x86_64)
-      # greenprint "Selected architecture: $arch"
-      ARCH=$arch
-      break
-      ;;
+        # greenprint "Selected architecture: $arch"
+        ARCH=$arch
+        break
+        ;;
     x86)
-      # greenprint "Selected architecture: $arch"
-      ARCH=$arch
-      break
-      ;;
+        # greenprint "Selected architecture: $arch"
+        ARCH=$arch
+        break
+        ;;
     exit)
-      redprint "exiting..."
-      break
-      ;;
-    *) 
-      redprint "Invalid option $REPLY"
-      ;;
-  esac
+        redprint "exiting..."
+        break
+        ;;
+    *)
+        redprint "Invalid option $REPLY"
+        ;;
+    esac
 done
 
 echo ""
 
 PS3="Select OS: "
 
-select os in linux osx windows exit
-do  
+select os in linux osx windows exit; do
     case $os in
     linux)
-      # greenprint "Selected os: $os"
-      OS=$os
-      break
-      ;;
+        # greenprint "Selected os: $os"
+        OS=$os
+        break
+        ;;
     osx)
-      # greenprint "Selected os: $os"
-      OS=$os
-      break
-      ;;
+        # greenprint "Selected os: $os"
+        OS=$os
+        break
+        ;;
     windows)
-      # greenprint "Selected os: $os"
-      OS=$os
-      break
-      ;;
+        # greenprint "Selected os: $os"
+        OS=$os
+        break
+        ;;
     exit)
-      redprint "exiting..."
-      break
-      ;;
-    *) 
-      redprint "Invalid option $REPLY"
-      ;;
-  esac
+        redprint "exiting..."
+        break
+        ;;
+    *)
+        redprint "Invalid option $REPLY"
+        ;;
+    esac
 done
 
 echo ""
@@ -78,21 +76,24 @@ echo ""
 read -p 'Enter number of runners: ' RUNNERS
 read -p 'Enter github token: ' GH_TOKEN
 
-options=( "$OS/$ARCH"/* )
+options=("$OS/$ARCH"/*)
 
 PS3="Select an option: "
 
 select option in "${options[@]}" "quit"; do
-  case $option in
+    case $option in
     *.dockerfile)
-      DF_NAME=$option
-      break
-      ;;    
+        DF_NAME=$option
+        break
+        ;;
     "quit")
-      break ;;
+        exit
+        break
+        ;;
     *)
-      redprint "Invalid option $REPLY" ;;
-  esac
+        redprint "Invalid option $REPLY"
+        ;;
+    esac
 done
 
 sed -i '' "8s/.*/      - ACCESS_TOKEN=$GH_TOKEN/" docker-compose.yml
