@@ -9,6 +9,13 @@ yellowprint() { printf "${YELLOW}%s${RESET}\n" "$1"; }
 magentaprint() { printf "${MAGENTA}%s${RESET}\n" "$1"; }
 cyanprint() { printf "${CYAN}%s${RESET}\n" "$1"; }
 
+greenprint "
+Setup CLI v0.1.0
+    Generates a root dockerfile based on the input
+
+Select the info for the github runner you want to run
+"
+
 PS3="Select CPU architecture: "
 
 select arch in x86_64 x86 exit
