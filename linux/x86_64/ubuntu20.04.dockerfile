@@ -50,8 +50,8 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN sudo apt-get update && sudo apt-get install yarn
 
 # Install go
-RUN wget https://go.dev/dl/
-RUN tar -C /usr/local -xzf go1.14.3.linux-amd64.tar.gz
+RUN wget https://go.dev/dl/go1.18.linux-amd64.tar.gz
+RUN tar -C /usr/local -xzf go1.18.linux-amd64.tar.gz
 RUN export PATH=$PATH:/usr/local/go/bin
 
 
