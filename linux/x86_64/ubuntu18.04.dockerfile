@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 # sets the github runner version
 ARG RUNNER_VERSION="2.289.1"
 
-RUN apt-get update -y && apt-get upgrade -y && useradd -m actionsdockeruser
+RUN apt-get update -y && apt-get upgrade -y && useradd -m docker
 RUN DEBIAN_FRONTEND=noninteractive TZ=America/New_York apt-get -y install tzdata
 RUN apt-get install -y --no-install-recommends \
     curl \
@@ -55,12 +55,12 @@ RUN tar -C /usr/local -xzf go1.18.linux-amd64.tar.gz
 RUN export PATH=$PATH:/usr/local/go/bin
 
 
-RUN cd /home/actionsdockeruser && mkdir actions-runner && cd actions-runner \
+RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
     && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
     && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
 
 COPY ./linux/scripts/start.sh start.sh
 RUN chmod +x start.sh
-USER actionsdockeruser
+USER docker
 
 ENTRYPOINT ["./start.sh"]
