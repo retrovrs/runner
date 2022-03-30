@@ -71,7 +71,28 @@ echo ""
 read -p 'Enter number of runners: ' RUNNERS
 read -p 'Enter github token: ' GH_TOKEN
 
+options=( "$OS/$ARCH"/* )
+
+PS3="Select an option: "
+
+select option in "${options[@]}" "quit"; do
+  case $option in
+    *.dockerfile)
+      DF_NAME=$option
+      break
+      ;;    
+    "quit")
+      break ;;
+    *)
+      redprint "Invalid option $REPLY" ;;
+  esac
+done
+
 sed -i '' "8s/.*/      - ACCESS_TOKEN=$GH_TOKEN/" docker-compose.yml
+
+echo ""
+yellowprint "[DEBUG] Dockerfile path: $DF_NAME"
+cp $DF_NAME ./Dockerfile
 
 echo ""
 greenprint "Done!"
