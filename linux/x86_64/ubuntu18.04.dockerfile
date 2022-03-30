@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 # sets the github runner version
-ARG RUNNER_VERSION="2.289.1"
+ARG RUNNER_VERSION="2.276.1"
 
 RUN apt-get update -y && apt-get upgrade -y && useradd -m docker
 RUN DEBIAN_FRONTEND=noninteractive TZ=America/New_York apt-get -y install tzdata
