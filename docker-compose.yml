@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  runner:
+    build: .
+    environment:
+      - ORGANIZATION=CSSUDII
+      - ACCESS_TOKEN=$$TOKEN$$
