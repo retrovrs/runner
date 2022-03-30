@@ -71,15 +71,15 @@ echo ""
 read -p 'Enter number of runners: ' RUNNERS
 read -p 'Enter github token: ' GH_TOKEN
 
-greenprint "CPU Architecture: $ARCH"
-greenprint "Operting System: $OS"
-greenprint "Runners: $RUNNERS"
-greenprint "Token: $GH_TOKEN"
-
-echo ""
-
-greenprint "Starting..."
-
 sed -i '' "8s/.*/      - ACCESS_TOKEN=$GH_TOKEN/" docker-compose.yml
 
+echo ""
 greenprint "Done!"
+echo ""
+
+greenprint "
+Next run the following commands to startup the runners
+
+$ docker-compose build
+$ docker-compose up --scale runner=$RUNNERS -d
+"
