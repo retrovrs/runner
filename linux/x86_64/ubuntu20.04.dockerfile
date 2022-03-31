@@ -1,4 +1,4 @@
-FROM ubuntu:20.04.3
+FROM ubuntu:20.04
 
 # sets the github runner version
 ARG RUNNER_VERSION="2.276.1"
@@ -54,13 +54,13 @@ RUN wget https://go.dev/dl/go1.18.linux-amd64.tar.gz
 RUN tar -C /usr/local -xzf go1.18.linux-amd64.tar.gz
 RUN export PATH=$PATH:/usr/local/go/bin
 
+COPY ./linux/scripts/start.sh start.sh
+RUN chmod +x start.sh
+
 USER docker
 
 RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
     && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
     && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
-
-COPY ./linux/scripts/start.sh start.sh
-RUN chmod +x start.sh
 
 ENTRYPOINT ["./start.sh"]
