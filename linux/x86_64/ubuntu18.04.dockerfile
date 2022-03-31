@@ -54,6 +54,7 @@ RUN wget https://go.dev/dl/go1.18.linux-amd64.tar.gz
 RUN tar -C /usr/local -xzf go1.18.linux-amd64.tar.gz
 RUN export PATH=$PATH:/usr/local/go/bin
 
+USER docker
 
 RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
     && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
@@ -61,6 +62,5 @@ RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
 
 COPY ./linux/scripts/start.sh start.sh
 RUN chmod +x start.sh
-USER docker
 
 ENTRYPOINT ["./start.sh"]
