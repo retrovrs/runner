@@ -1,3 +1,60 @@
 {
-    "version": "0.1.0"
+    "$schema": "https://cssudii-data.pages.dev/new_data/json/packageinfo.json",
+    "version": "0.1.0",
+    "files": [
+        "packages.json",
+        ".editorconfig",
+        "docker-compose.yml",
+        "setup.sh"
+    ],
+    "support": {
+        "os": [
+            "win32",
+            "linux",
+            "osx"
+        ],
+        "arch": [
+            "x86_64",
+            "x86"
+        ],
+        "context": [
+            "i=0",
+            "/bin/bash",
+            "might work i++",
+            "cmd('docker')",
+            "i++",
+            "exit_code(cmd('docker')).is(0).has(fetch('https://cssudii.tk/store/_old/docker/docker_good_exit_code_help_command_no_args_input.txt').read_as_string())",
+            "i>>"
+        ]
+    },
+    "docker": {
+        "root": "Dockerfile",
+        "buildCommand": "chmod +x setup.sh && ./setup.sh",
+        "buildEnv": [
+            {
+                "key": "ARCH",
+                "value": "x86_64"
+            },
+            {
+                "key": "OS",
+                "value": "linux"
+            },
+            {
+                "key": "SELECT_OPT",
+                "value": "ubuntu18.04.dockerfile"
+            },
+            {
+                "key": "GH_TOKEN_NO_SET",
+                "value": true
+            },
+            {
+                "key": "ORG",
+                "value": "CSSUDII"
+            },
+            {
+                "key": "HEADLESS_SETUP",
+                "value": true
+            }
+        ]
+    }
 }
