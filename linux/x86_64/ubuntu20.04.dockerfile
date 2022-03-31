@@ -57,6 +57,9 @@ RUN export PATH=$PATH:/usr/local/go/bin
 COPY ./linux/scripts/start.sh start.sh
 RUN chmod +x start.sh
 
+COPY ./linux/scripts/runsvc.sh runsvc.sh
+RUN chmox +x runsvc.sh
+
 USER docker
 
 RUN cd /home/docker && mkdir actions-runner && cd actions-runner \

@@ -7,14 +7,16 @@ REG_TOKEN=$(curl -sX POST -H "Authorization: token ${ACCESS_TOKEN}" https://api.
 
 cd /home/docker/actions-runner
 
-./config.sh --url https://github.com/${ORGANIZATION} --token ${REG_TOKEN}
+./config.sh --url https://github.com/${ORGANIZATION} --token ${REG_TOKEN} --unattended --replace
 
-cleanup() {
+remove() {
     echo "Removing runner..."
     ./config.sh remove --unattended --token ${REG_TOKEN}
 }
 
-trap 'cleanup; exit 130' INT
-trap 'cleanup; exit 143' TERM
+trap 'remove; exit 130' INT
+trap 'remove; exit 143' TERM
 
-./run.sh & wait $!
+./runsvc.sh "$*" &
+
+wait $!
