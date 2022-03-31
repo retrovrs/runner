@@ -58,7 +58,7 @@ COPY ./linux/scripts/start.sh start.sh
 RUN chmod +x start.sh
 
 COPY ./linux/scripts/runsvc.sh runsvc.sh
-RUN chmox +x runsvc.sh
+RUN chmod +x runsvc.sh
 
 USER docker
 
