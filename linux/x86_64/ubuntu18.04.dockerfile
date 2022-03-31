@@ -61,6 +61,6 @@ RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
 
 COPY ./linux/scripts/start.sh start.sh
 RUN chmod +x start.sh
-# USER docker
+USER docker
 
-ENTRYPOINT ["sudo", "./start.sh"]
+ENTRYPOINT ["./start.sh"]
