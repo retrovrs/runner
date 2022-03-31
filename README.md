@@ -6,11 +6,3 @@ Github Runner Dockerfile
 $ chmox +x setup.sh
 $ ./setup.sh
 ```
-
-## Example
-Start 4 runners
-
-```shell
-$ docker-compose build
-$ docker-compose up --scale runner=4 -d
-```
