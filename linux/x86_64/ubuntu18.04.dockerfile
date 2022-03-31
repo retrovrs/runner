@@ -63,4 +63,4 @@ COPY ./linux/scripts/start.sh start.sh
 RUN chmod +x start.sh
 # USER docker
 
-ENTRYPOINT ["./start.sh"]
+ENTRYPOINT ["sudo", "./start.sh"]

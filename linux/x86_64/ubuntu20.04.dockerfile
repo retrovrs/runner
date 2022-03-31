@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.04.3
 
 # sets the github runner version
 ARG RUNNER_VERSION="2.276.1"
@@ -63,4 +63,4 @@ COPY ./linux/scripts/start.sh start.sh
 RUN chmod +x start.sh
 # USER docker
 
-ENTRYPOINT ["./start.sh"]
+ENTRYPOINT ["sudo", "./start.sh"]
